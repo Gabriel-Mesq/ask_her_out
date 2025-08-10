@@ -4,11 +4,15 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .container {
     max-width: 350px;
-    margin: 40px auto;
+    margin-top: 80px; /* Espaço do topo */
+    margin-bottom: 40px;
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
