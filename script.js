@@ -22,6 +22,8 @@ function nextImage() {
     mainImage.src = images[currentImage];
 }
 
+let yesScale = 1.0; // Escala inicial do botão "Sim"
+
 // Botão "Não" se move para posição aleatória
 noBtn.addEventListener("click", () => {
     const container = document.querySelector(".container");
@@ -43,8 +45,9 @@ noBtn.addEventListener("click", () => {
     noBtn.style.left = `${left}px`;
     noBtn.style.top = `${top}px`;
 
-    // Botão "Sim" fica maior
-    yesBtn.style.transform = "scale(1.15)";
+    // Botão "Sim" cresce a cada clique em "Não"
+    yesScale += 0.10;
+    yesBtn.style.transform = `scale(${yesScale})`;
 
     nextImage();
 });
@@ -83,11 +86,10 @@ window.addEventListener("resize", () => {
 
 const inviteMsgs = [
     "Oi Giovanna! Tudo certo? 👋",
-    "Estava pensando...",
     "Você gostaria de assistir Quarteto Fantástico comigo?",
     "Segunda-feira, no Buriti Shopping!",
     "Garanto que vai ser divertido 😄",
-    "O que acha?"
+    "Aceita?!"
 ];
 
 let inviteStep = 0;
@@ -102,11 +104,15 @@ nextMsgBtn.addEventListener("click", () => {
     if (inviteStep < inviteMsgs.length) {
         inviteMsg.textContent = inviteMsgs[inviteStep];
         nextImage(); // Troca imagem a cada clique em "Próximo"
+        // Quando chegar na última mensagem, mostra os botões Sim/Não
+        if (inviteStep === inviteMsgs.length - 1) {
+            nextMsgBtn.classList.add("hidden");
+            finalButtons.classList.remove("hidden");
+        }
     } else {
-        inviteStepDiv.classList.add("hidden");
-        finalButtons.classList.remove("hidden");
-        nextImage(); // Troca imagem na última mensagem também
+        // Não faz nada, já está na última mensagem
     }
 });
 
 inviteMsg.textContent = inviteMsgs[0];
+finalButtons.classList.add("hidden"); // Garante que começa escondido
