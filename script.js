@@ -1,11 +1,11 @@
 const images = [
     "images/sanrio1.jpeg",
     "images/sanrio2.jpeg",
-    "images/sanrio3.png",
+    "images/sanrio3.PNG",
     "images/sanrio4.jpeg",
-    "images/sanrio5.png",
-    "images/sanrio6.png",
-    "images/sanrio7.png",
+    "images/sanrio5.PNG",
+    "images/sanrio6.PNG",
+    "images/sanrio7.PNG",
 ];
 
 let currentImage = 0;
