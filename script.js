@@ -51,19 +51,27 @@ noBtn.addEventListener("click", () => {
 
 // Botão "Sim" mostra mensagem de parabéns
 yesBtn.addEventListener("click", () => {
-    congratsMessage.classList.remove("hidden");
-    buttonsDiv.style.display = "none";
-    mainImage.style.display = "none";
-    document.body.style.background = "#fff"; // Remove cor de fundo para o gif
-    // Exibe o gif ocupando toda a tela
-    congratsMessage.innerHTML = `
-        <img src="images/yappi.gif" alt="Yappi GIF" style="margin-top:16px;max-width:100%;border-radius:12px;">
+    // Remove tudo da tela e mostra só o gif grande
+    document.body.style.background = "#fff";
+    document.querySelector('.container').style.display = "none";
+    // Cria um elemento para o gif ocupando toda a tela
+    const fullGif = document.createElement("div");
+    fullGif.style.position = "fixed";
+    fullGif.style.top = "0";
+    fullGif.style.left = "0";
+    fullGif.style.width = "100vw";
+    fullGif.style.height = "100vh";
+    fullGif.style.background = "#fff";
+    fullGif.style.display = "flex";
+    fullGif.style.justifyContent = "center";
+    fullGif.style.alignItems = "center";
+    fullGif.style.zIndex = "9999";
+    fullGif.innerHTML = `
+        <img src="images/yappi.gif" 
+             alt="Yappi GIF" 
+             style="width:100vw;max-width:100vw;height:100vh;max-height:100vh;object-fit:cover;">
     `;
-    congratsMessage.style.background = "none";
-    congratsMessage.style.padding = "0";
-    congratsMessage.style.margin = "0";
-    congratsMessage.style.borderRadius = "0";
-    congratsMessage.style.boxShadow = "none";
+    document.body.appendChild(fullGif);
 });
 
 // Responsividade: reseta posição do botão "Não" ao redimensionar
@@ -78,6 +86,7 @@ const inviteMsgs = [
     "Estava pensando...",
     "Você gostaria de assistir Quarteto Fantástico comigo?",
     "Segunda-feira, no Buriti Shopping!",
+    "Garanto que vai ser divertido 😄",
     "O que acha?"
 ];
 
